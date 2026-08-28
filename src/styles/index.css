@@ -1129,6 +1129,24 @@ a {
   pointer-events: none;
 }
 
+.sewerslvt-theme-video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  filter: brightness(0.48) saturate(1.12) contrast(1.08);
+  object-fit: cover;
+  pointer-events: none;
+  transition: opacity 560ms ease;
+}
+
+.theme-we-had-good-times .sewerslvt-theme-video {
+  opacity: 1;
+}
+
 .album-theme-backdrop {
   position: absolute;
   z-index: 1;
@@ -1191,27 +1209,18 @@ a {
 }
 
 .theme-we-had-good-times .album-theme-backdrop {
-  background:
-    linear-gradient(rgba(4, 0, 10, 0.9), rgba(7, 0, 18, 0.94)),
-    url("/album-we-had-good-times.jpg") center / cover;
-  opacity: 1;
+  background: transparent;
+  opacity: 0;
 }
 
 .theme-we-had-good-times .album-theme-backdrop::before {
-  background:
-    repeating-linear-gradient(101deg, transparent 0 31px, rgba(129, 51, 255, 0.34) 32px 34px, transparent 35px 93px),
-    repeating-linear-gradient(76deg, transparent 0 54px, rgba(213, 84, 255, 0.2) 55px 57px, transparent 58px 129px);
-  filter: blur(0.5px);
-  opacity: 1;
-  animation: purple-scratches 1.6s steps(5) infinite;
+  opacity: 0;
+  animation: none;
 }
 
 .theme-we-had-good-times .album-theme-backdrop::after {
-  background-image:
-    linear-gradient(93deg, transparent 0 42%, rgba(127, 49, 255, 0.38) 42.4% 42.8%, transparent 43.2%),
-    radial-gradient(circle at 68% 32%, rgba(112, 28, 255, 0.3), transparent 24%);
-  opacity: 1;
-  animation: violet-pulse 3.8s ease-in-out infinite alternate;
+  opacity: 0;
+  animation: none;
 }
 
 .theme-time-machine .album-theme-backdrop {
@@ -1311,6 +1320,159 @@ a {
   transition: color 760ms ease;
 }
 
+.album-cinematic-focus {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear 820ms;
+}
+
+.album-cinematic-focus.is-active {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.cinematic-dim {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: rgba(1, 5, 18, 0.76);
+  opacity: 0;
+  transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cinematic-dim::before,
+.cinematic-dim::after {
+  position: absolute;
+  inset: -35%;
+  content: "";
+  pointer-events: none;
+  transition: transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cinematic-dim::before {
+  background: linear-gradient(108deg, transparent 42%, rgba(69, 220, 255, 0.2) 48%, rgba(255, 255, 255, 0.38) 50%, transparent 56%);
+  transform: translate3d(-105%, 0, 0);
+}
+
+.cinematic-dim::after {
+  background: linear-gradient(72deg, transparent 44%, rgba(40, 126, 255, 0.18) 49%, rgba(255, 255, 255, 0.2) 50%, transparent 55%);
+  transform: translate3d(105%, 0, 0);
+}
+
+.album-cinematic-focus.is-active .cinematic-dim {
+  opacity: 1;
+}
+
+.album-cinematic-focus.is-active .cinematic-dim::before {
+  transform: translate3d(105%, 0, 0);
+}
+
+.album-cinematic-focus.is-active .cinematic-dim::after {
+  transform: translate3d(-105%, 0, 0);
+}
+
+.focused-album-visual {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: min(430px, 72vw);
+  aspect-ratio: 1;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.48) rotate(-190deg);
+  transition:
+    opacity 300ms ease,
+    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.album-cinematic-focus.is-active .focused-album-visual {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+.focused-album-cover,
+.focused-vinyl-record {
+  position: absolute;
+  top: 5%;
+  left: 4%;
+  display: block;
+  width: 86%;
+  aspect-ratio: 1;
+}
+
+.focused-album-cover {
+  z-index: 2;
+  overflow: hidden;
+  border: 6px solid #ffffff;
+  background: var(--album-accent);
+  box-shadow:
+    12px 14px 0 rgba(0, 0, 0, 0.62),
+    0 0 55px color-mix(in srgb, var(--album-accent) 48%, transparent);
+  transform: translateX(-12%) rotate(-2deg);
+}
+
+.focused-album-cover img,
+.focused-vinyl-label img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.focused-vinyl-record {
+  z-index: 1;
+  left: 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 0 3%, #131313 3.3% 9%, var(--album-accent) 9.4% 18%, #050505 18.5% 100%);
+  box-shadow: 8px 12px 34px rgba(0, 0, 0, 0.72);
+  transform: translateX(37%);
+  animation: vinyl-preview-spin 4.8s linear infinite;
+}
+
+.focused-vinyl-label {
+  position: absolute;
+  top: 37%;
+  left: 37%;
+  width: 26%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.focused-album-title {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  display: grid;
+  width: min(620px, 88vw);
+  color: #ffffff;
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.85));
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.focused-album-title strong {
+  font-size: clamp(0.95rem, 2.2vw, 1.45rem);
+}
+
+.focused-album-title small {
+  margin-top: 5px;
+  color: var(--electric-blue);
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.album-focus-stage {
+  position: relative;
+  z-index: 1;
+}
+
 .dreams-heading {
   width: min(780px, 90%);
   margin-bottom: 56px;
@@ -1345,6 +1507,9 @@ a {
   color: #ffffff;
   background: var(--deep-blue);
   clip-path: polygon(2% 3%, 98% 0, 100% 91%, 92% 100%, 0 96%);
+  transition:
+    background-color 520ms ease,
+    box-shadow 620ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .album-experience::before {
@@ -1378,7 +1543,10 @@ a {
   cursor: pointer;
   transform: rotateY(calc(var(--distance) * -7deg)) translateY(calc(var(--distance) * 8px));
   transform-style: preserve-3d;
-  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), filter 240ms ease;
+  transition:
+    opacity 420ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 420ms ease;
 }
 
 .vinyl-album:not(.is-active) {
@@ -1569,140 +1737,79 @@ a {
   margin-top: 1.4rem;
 }
 
-.aim-trainer {
+.valorant-video-wrap {
   position: relative;
-  min-height: 510px;
+  padding: 14px 14px 32px;
   overflow: hidden;
   color: #ffffff;
-  background:
-    linear-gradient(90deg, transparent 49.8%, rgba(22, 207, 251, 0.18) 50%, transparent 50.2%),
-    linear-gradient(transparent 49.8%, rgba(22, 207, 251, 0.18) 50%, transparent 50.2%),
-    radial-gradient(circle at center, #18366d 0, #09122f 65%, #050817 100%);
+  background: linear-gradient(145deg, #08102c 0%, #081e50 54%, #0b4d8c 100%);
   clip-path: polygon(3% 0, 100% 5%, 96% 100%, 0 92%);
   box-shadow: 16px 17px 0 var(--ocean-blue);
 }
 
-.aim-trainer::before {
+.valorant-video-wrap::before {
   position: absolute;
+  z-index: 0;
   inset: 0;
-  background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(255, 255, 255, 0.025) 5px 6px);
+  background:
+    linear-gradient(105deg, transparent 0 61%, rgba(50, 219, 255, 0.18) 61% 63%, transparent 63%),
+    linear-gradient(12deg, transparent 0 75%, rgba(255, 255, 255, 0.08) 75% 76%, transparent 76%);
   content: "";
   pointer-events: none;
 }
 
-.aim-hud {
+.valorant-video-wrap video {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 2px solid rgba(126, 234, 255, 0.72);
+  background: #02050d;
+  object-fit: cover;
+  box-shadow: 8px 9px 0 rgba(0, 0, 0, 0.45);
+}
+
+.replay-video-label {
   position: absolute;
-  z-index: 4;
-  top: 24px;
-  right: 26px;
-  left: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  z-index: 2;
+  right: 34px;
+  bottom: 8px;
+  color: #ffffff;
   font-family: Arial, sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 900;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.aim-hud strong {
-  color: #ff7b14;
-  font-size: 1.25rem;
-}
-
-.aim-target {
-  position: absolute;
-  z-index: 3;
-  top: var(--target-y);
-  left: var(--target-x);
-  display: grid;
-  width: var(--target-size);
-  height: var(--target-size);
-  padding: 0;
-  border: 3px solid #ffb65f;
-  border-radius: 50%;
-  place-items: center;
-  background: #ff6a00;
-  box-shadow:
-    0 0 0 6px rgba(255, 106, 0, 0.2),
-    0 0 24px rgba(255, 106, 0, 0.8);
-  cursor: crosshair;
-  transform: translate(-50%, -50%);
-  transition: filter 120ms ease, scale 120ms ease;
-}
-
-.aim-target span {
-  width: 19%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #fff8e8;
-}
-
-.aim-target:hover,
-.aim-target:focus-visible {
-  filter: brightness(1.22);
-  scale: 1.1;
-}
-
-.aim-target.is-hit {
-  animation: target-explode 700ms ease-out forwards;
-}
-
-.aim-target.is-hit::before,
-.aim-target.is-hit::after {
-  position: absolute;
-  inset: 42%;
-  border-radius: 50%;
-  background: #fff2c2;
-  box-shadow:
-    -42px -12px 0 #ff7b14,
-    38px -28px 0 #ff9b22,
-    48px 24px 0 #ff5b00,
-    -32px 38px 0 #ffbf55;
-  content: "";
-  animation: target-particles 660ms ease-out forwards;
-}
-
-.aim-trainer > p {
-  position: absolute;
-  right: 25px;
-  bottom: 22px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-family: Arial, sans-serif;
-  font-size: 0.56rem;
-  font-weight: 900;
-  letter-spacing: 0.17em;
-}
-
-.memory-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.laughter-video-wrap {
+  position: relative;
+  width: min(940px, 92%);
   margin-top: 150px;
-  padding: 1.25rem 1.7rem;
+  margin-left: auto;
+  padding: 18px 18px 44px;
   color: #ffffff;
-  background: #090b16;
-  clip-path: polygon(0 18%, 98% 0, 100% 84%, 2% 100%);
+  background: linear-gradient(125deg, #080b1d 0%, #111d55 62%, #0a75af 100%);
+  clip-path: polygon(0 4%, 98% 0, 100% 92%, 3% 100%);
+  box-shadow: -15px 16px 0 rgba(28, 190, 240, 0.72);
+}
+
+.laughter-video-wrap video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: #02040b;
+  object-fit: cover;
+}
+
+.laughter-video-heading {
+  margin-bottom: 15px;
+  color: #ffffff;
   font-size: clamp(0.72rem, 1.4vw, 1rem);
+  font-weight: 900;
   letter-spacing: 0.09em;
-}
-
-.memory-strip b {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--persona-pink);
-}
-
-.memory-strip b::before {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--persona-pink);
-  content: "";
-  animation: recording 1.1s steps(1) infinite;
 }
 
 .collection-bubbles {
@@ -2067,20 +2174,16 @@ a {
     box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.55);
   }
 
-  .aim-trainer {
-    min-height: 430px;
+  .valorant-video-wrap {
+    padding: 10px 10px 28px;
+    box-shadow: 9px 10px 0 var(--ocean-blue);
   }
 
-  .aim-target {
-    width: calc(var(--target-size) * 0.78);
-    height: calc(var(--target-size) * 0.78);
-  }
-
-  .memory-strip {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.8rem;
+  .laughter-video-wrap {
+    width: calc(100% - 8px);
     margin-top: 105px;
+    padding: 11px 11px 35px;
+    box-shadow: -8px 10px 0 rgba(28, 190, 240, 0.72);
   }
 
   .figma-collection .collection-footer {
@@ -2091,8 +2194,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .water-light,
-  .collection-bubbles i,
-  .memory-strip b::before {
+  .collection-bubbles i {
     animation: none;
   }
 

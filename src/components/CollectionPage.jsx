@@ -5,13 +5,7 @@ import {
   favoriteAlbums,
 } from "../data/collectionActs";
 
-const targets = [
-  { id: 1, x: 14, y: 22, size: 72 },
-  { id: 2, x: 71, y: 13, size: 52 },
-  { id: 3, x: 47, y: 50, size: 84 },
-  { id: 4, x: 81, y: 66, size: 64 },
-  { id: 5, x: 23, y: 72, size: 46 },
-];
+const ALBUM_PREVIEW_VOLUME = 0.07;
 
 function SectionHeading({ number, children, light = false }) {
   return (
@@ -63,7 +57,7 @@ function AlbumDeck({ onPreviewChange }) {
 
   const previewAlbum = (album, index) => {
     setActiveAlbum(index);
-    onPreviewChange(album.theme);
+    onPreviewChange(album);
 
     if (previewedAlbumRef.current === album.title) return;
 
@@ -93,7 +87,7 @@ function AlbumDeck({ onPreviewChange }) {
     audio
       .play()
       .then(() => {
-        fadeAudio(audio, 0.3, 900);
+        fadeAudio(audio, ALBUM_PREVIEW_VOLUME, 900);
       })
       .catch(() => {
         playingAudiosRef.current.delete(audio);
@@ -187,47 +181,37 @@ function AlbumDeck({ onPreviewChange }) {
   );
 }
 
-function AimTrainer() {
-  const [hitTargets, setHitTargets] = useState([]);
-  const [score, setScore] = useState(0);
+function AlbumCinematicFocus({ album }) {
+  const [displayAlbum, setDisplayAlbum] = useState(favoriteAlbums[0]);
 
-  const hitTarget = (id) => {
-    if (hitTargets.includes(id)) return;
-
-    setHitTargets((current) => [...current, id]);
-    setScore((current) => current + 1);
-
-    window.setTimeout(() => {
-      setHitTargets((current) =>
-        current.filter((targetId) => targetId !== id),
-      );
-    }, 720);
-  };
+  useEffect(() => {
+    if (album) setDisplayAlbum(album);
+  }, [album]);
 
   return (
-    <div className="aim-trainer">
-      <div className="aim-hud">
-        <span>KOVAak's // treino</span>
-        <strong>{String(score).padStart(3, "0")}</strong>
+    <div
+      className={`album-cinematic-focus ${album ? "is-active" : ""}`}
+      aria-hidden="true"
+    >
+      <div className="cinematic-dim" />
+      <div
+        className="focused-album-visual"
+        style={{ "--album-accent": displayAlbum.accent }}
+      >
+        <span className="focused-vinyl-record">
+          <span className="vinyl-grooves" />
+          <span className="focused-vinyl-label">
+            <img src={displayAlbum.cover} alt="" />
+          </span>
+        </span>
+        <span className="focused-album-cover">
+          <img src={displayAlbum.cover} alt="" />
+        </span>
+        <span className="focused-album-title">
+          <strong>{displayAlbum.title}</strong>
+          <small>{displayAlbum.artist}</small>
+        </span>
       </div>
-      {targets.map((target) => (
-        <button
-          aria-label="Explodir alvo"
-          className={`aim-target ${hitTargets.includes(target.id) ? "is-hit" : ""}`}
-          disabled={hitTargets.includes(target.id)}
-          key={target.id}
-          onClick={() => hitTarget(target.id)}
-          style={{
-            "--target-x": `${target.x}%`,
-            "--target-y": `${target.y}%`,
-            "--target-size": `${target.size}px`,
-          }}
-          type="button"
-        >
-          <span />
-        </button>
-      ))}
-      <p>CLIQUE NOS ALVOS</p>
     </div>
   );
 }
@@ -243,7 +227,9 @@ function Bubbles() {
 }
 
 export function CollectionPage() {
-  const [albumTheme, setAlbumTheme] = useState(null);
+  const [albumPreview, setAlbumPreview] = useState(null);
+  const sewerslvtVideoRef = useRef(null);
+  const albumTheme = albumPreview?.theme ?? null;
 
   useEffect(() => {
     const items = document.querySelectorAll("[data-reveal]");
@@ -260,8 +246,22 @@ export function CollectionPage() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const video = sewerslvtVideoRef.current;
+    if (!video) return;
+
+    if (albumTheme === "we-had-good-times") {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [albumTheme]);
+
   return (
     <main className="collection-page figma-collection">
+      <AlbumCinematicFocus album={albumPreview} />
+
       <a className="collection-back" href="#inicio" aria-label="Voltar ao início">
         <span aria-hidden="true">←</span>
         início
@@ -377,6 +377,17 @@ export function CollectionPage() {
         className={`dreams-section ${albumTheme ? `theme-${albumTheme}` : "theme-default"}`}
       >
         <Bubbles />
+        <video
+          aria-hidden="true"
+          className="sewerslvt-theme-video"
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          ref={sewerslvtVideoRef}
+          src={collectionMedia.sewerslvtBackdrop}
+          tabIndex="-1"
+        />
         <div className="album-theme-backdrop" aria-hidden="true" />
         <div className="sisterhood-atmosphere" aria-hidden="true">
           <img src={collectionMedia.sisterhoodEye} alt="" />
@@ -416,8 +427,8 @@ export function CollectionPage() {
             <p>{collectionCopy.albumsIntro}</p>
           </div>
 
-          <div data-reveal>
-            <AlbumDeck onPreviewChange={setAlbumTheme} />
+          <div className="album-focus-stage" data-reveal>
+            <AlbumDeck onPreviewChange={setAlbumPreview} />
           </div>
 
           <div className="valorant-layout">
@@ -425,14 +436,28 @@ export function CollectionPage() {
               <p>{collectionCopy.valorant}</p>
               <p>{collectionCopy.immortal}</p>
             </div>
-            <div data-reveal>
-              <AimTrainer />
+            <div className="valorant-video-wrap" data-reveal>
+              <span className="replay-video-label">REPLAY // VALORANT</span>
+              <video
+                controls
+                muted
+                playsInline
+                preload="metadata"
+                src={collectionMedia.valorantReplay}
+              />
             </div>
           </div>
 
-          <div className="memory-strip" data-reveal>
-            <span>VÍDEOS DE RISADAS E COISAS ALEATÓRIAS</span>
-            <b>REC</b>
+          <div className="laughter-video-wrap" data-reveal>
+            <div className="laughter-video-heading">
+              VÍDEOS DE RISADAS E COISAS ALEATÓRIAS
+            </div>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              src={collectionMedia.laughterVideo}
+            />
           </div>
         </div>
       </section>

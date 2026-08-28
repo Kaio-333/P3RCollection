@@ -39,6 +39,9 @@ export const collectionMedia = {
   personaWater: assetUrl("persona-water.jpeg"),
   sisterhoodEye: assetUrl("eye.png"),
   pucprAward: assetUrl("premiacao-pucpr.jpeg"),
+  valorantReplay: assetUrl("valorant-replay.mp4"),
+  laughterVideo: assetUrl("video-risada.mp4"),
+  sewerslvtBackdrop: assetUrl("sewerslvt-goodbye-loop.mp4"),
 };
 
 export const favoriteAlbums = [
