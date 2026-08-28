@@ -2,26 +2,28 @@ const assetUrl = (fileName) => `${import.meta.env.BASE_URL}${fileName}`;
 
 export const collectionCopy = {
   beginning:
-    "Sou nascido em Belém do Pará, acredito que foi onde eu aprendi a ser respeitoso, curioso, sinto bastante saudade da família onde convivi, desde criança sempre fui tímido, foi ai então que encontrei minha paz em computadores.",
+    "Sou nascido em Belém do Pará. Acredito que foi onde eu aprendi a ser respeitoso e curioso. Sinto bastante saudade da família com quem convivi. Desde criança, sempre fui tímido. Foi aí, então, que encontrei minha paz nos computadores.",
   creativity:
-    "Onde desde cedo na casa do meu primo mais velho, tive contato com computadores, e desde o primeiro contato, ja fiquei curioso demais, sempre queria ficar mexendo no computador, tentando entender o que cada coisa fazia, e como fazia. Com isso veio meu amor por jogos, principalmente minecraft, onde minha criatividade era finalmente entendida, seja com redstone, blocos de comando, ou mods. Alem disso, outro jogo que ajudou a alimentar minha curiosidade por programação sempre foi, sem duvidas, o Roblox, No roblox sempre quis fazer meus jogos, aprendendo sozinho, vendo tutoriais quando tinha menos de 7 anos, aprendi a fazer jogos e aprendi ingles assistindo e traduzindo simultaneamente. Jogando minecraft também ajudou bastante a ser autodidata em ingles, aprendi muito com assimilação nesse jogo.",
+    "Desde cedo, na casa do meu primo mais velho, tive contato com computadores e, desde o primeiro contato, já fiquei curioso demais. Sempre queria ficar mexendo no computador, tentando entender o que cada coisa fazia e como fazia. Com isso, veio meu amor por jogos, principalmente Minecraft, onde minha criatividade era finalmente entendida, seja com redstone, blocos de comando ou mods. Além disso, outro jogo que ajudou a alimentar minha curiosidade por programação sempre foi, sem dúvidas, o Roblox. No Roblox, sempre quis fazer meus jogos. Aprendendo sozinho e vendo tutoriais quando tinha menos de 7 anos, aprendi a fazer jogos e também aprendi inglês, assistindo e traduzindo simultaneamente. Jogar Minecraft também me ajudou bastante a ser autodidata em inglês; aprendi muito por assimilação nesse jogo.",
   firstGame:
-    "Apos inúmeros tutoriais eu finalmente consegui fazer algo que me divertiu na época",
+    "Após inúmeros tutoriais, eu finalmente consegui fazer algo que me divertiu na época.",
   stillWorks:
-    "Surpreendentemente o jogo funciona ate hoje, em sua grande parte kkkkkkkkkk.",
+    "Surpreendentemente, o jogo funciona até hoje, em sua maior parte kkkkkkkkkk.",
   returnToRoblox:
-    "Apos 10 anos me reuni com um amigo que ja trabalha na area para fazer um jogo com o desafio de fazer ele em 1 mes novamente apenas pela diversão, achei impressionante o quanto a engine do jogo avançou mas mesmo assim fui aprender a mexer novamente, nesse processo aprende game design, modelagem 3d, mas principalmente animações de rigs 3D. Acredito que esse processo foi um dos mais divertidos da minha vida pois eu estava ao lado de alguém que eu gosto de trabalhar, e além de tudo, quando voce gosta do que esta fazendo voce faz com a alma. Conseguimos no final, 3,900 visitas no jogo e ficamos satisfeitos com o projeto final. E minha vida sempre foi assim, eu gosto de aprender tudo que eu gosto, nem que seja o básico,  Isso me fez ir atrás de aprender a fazer músicas, modelagem 3D, aprendi animações em 3D apenas para esse jogo e programação que nunca deixei de praticar.",
+    "Após 10 anos, reuni-me com um amigo que já trabalha na área para fazer um jogo, com o desafio de terminá-lo em 1 mês, novamente apenas pela diversão. Achei impressionante o quanto a engine do jogo avançou, mas, mesmo assim, fui aprender a mexer nela novamente. Nesse processo, aprendi game design, modelagem 3D e, principalmente, animações de rigs 3D. Acredito que esse processo foi um dos mais divertidos da minha vida, pois eu estava ao lado de alguém com quem gosto de trabalhar. Além de tudo, quando você gosta do que está fazendo, você faz com a alma. Conseguimos, no final, 3.900 visitas no jogo e ficamos satisfeitos com o projeto final. Minha vida sempre foi assim: gosto de aprender tudo o que me interessa, nem que seja apenas o básico. Isso me fez ir atrás de aprender a fazer músicas, modelagem 3D, animações em 3D apenas para esse jogo e programação, que nunca deixei de praticar.",
   circle:
-    "Acho que grande parte da minha motivação vem justamente do meu circulo, quando vejo pessoas fazendo coisas grandiosas isso me anima demais, ver pessoas próximas com a mesma sede de aprender e desenvolver coisas novas, tenho uma amiga que nos conhecemos jogando no Xbox 360 quando tínhamos por volta dos 5 anos e somos amigos ate hoje, sou bastante grato a ela por sempre apoiar ideias que tenho, e principalmente a um amigo meu chamado Dylan, o amigo com que fiz o jogo do roblox, ver nosso progresso no jogo, cada um ajudando e elogiando ou dando feedbacks fez o jogo andar mais rapido.",
+    "Acho que grande parte da minha motivação vem justamente do meu círculo. Quando vejo pessoas fazendo coisas grandiosas, isso me anima demais. Ver pessoas próximas com a mesma sede de aprender e desenvolver coisas novas também me motiva. Tenho uma amiga que conheci jogando no Xbox 360 quando tínhamos por volta de 5 anos, e somos amigos até hoje. Sou bastante grato a ela por sempre apoiar as ideias que tenho e, principalmente, a um amigo meu chamado Dylan, com quem fiz o jogo do Roblox. Ver nosso progresso no jogo, cada um ajudando, elogiando ou dando feedback, fez o jogo avançar mais rápido.",
+  currentAchievement:
+    "Hoje em dia, estou muito feliz por aplicar meus conhecimentos na faculdade e com meus amigos, que sempre são uma parte muito importante nesse processo para mim. Até chegamos ao segundo lugar na Galeria de Projetos da PUCPR, criando um site de acessibilidade para pessoas com baixa visão, TDAH e dislexia.",
   music:
-    "Amo filmes e amo MUITO MUSICAS, uma das minhas obsessões ate hoje e meu lastfm:",
+    "Amo filmes e amo MUITO MÚSICA. Uma das minhas obsessões até hoje é o meu Last.fm:",
   scrobbles:
-    "Onde conto com 121,400 musicas ouvidas desde 28 de janeiro de 2023.",
-  albumsIntro: "dentre essas musicas, albuns que eu gosto sao:",
+    "Conto com 121.400 músicas ouvidas desde 28 de janeiro de 2023.",
+  albumsIntro: "Entre essas músicas, alguns álbuns de que gosto são:",
   valorant:
-    "Um dos meus sonhos desde criança era ser um jogador profissional de fps, onde o jogo onde alcancei maior sucesso foi no valorant, onde me esforcei demais, sempre me esforco no o que eu gosto e dou meu maximo. (obrigado kovaaks.)",
+    "Um dos meus sonhos desde criança era ser jogador profissional de FPS. O jogo em que alcancei maior sucesso foi Valorant, no qual me esforcei demais. Sempre me esforço no que gosto e dou o meu máximo. (Obrigado, Kovaak's.)",
   immortal:
-    "Sendo imortal(2 maior rank) ate hoje em dia em tempos de faculdade e trabalhos avulsos. Durante minha vida toda eu sempre gostei de salvar videos sobre experiencias com amigos e sobre comparação de progresso, seja dos jogos, risadas ou qualquer outra coisa.",
+    "Cheguei ao Imortal (segundo maior rank) e continuo nele até hoje, mesmo em tempos de faculdade e trabalhos avulsos. Durante toda a minha vida, sempre gostei de salvar vídeos sobre experiências com amigos e sobre comparação de progresso, sejam jogos, risadas ou qualquer outra coisa.",
 };
 
 export const collectionMedia = {
@@ -30,11 +32,13 @@ export const collectionMedia = {
   robloxClassic: assetUrl("roblox-classic.jpg"),
   zombieGame: assetUrl("jogo-zumbi.png"),
   createdAt: assetUrl("roblox-created-2015.png"),
+  recentCreatedAt: assetUrl("roblox-created-2025.png"),
   recentGame: assetUrl("jogo-roblox-recente.png"),
   gameVideo: assetUrl("jogo-kumo.mp4"),
   lastfm: assetUrl("lastfm.png"),
   personaWater: assetUrl("persona-water.jpeg"),
   sisterhoodEye: assetUrl("eye.png"),
+  pucprAward: assetUrl("premiacao-pucpr.jpeg"),
 };
 
 export const favoriteAlbums = [

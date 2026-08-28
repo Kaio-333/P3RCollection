@@ -1,7 +1,7 @@
 export const portfolioLinks = [
   {
     id: "colecao",
-    label: "COLECAO",
+    label: "COLEÇÃO",
     positionClass: "top-[22.593%]",
     color: "#16cffb",
     blendMode: "overlay",
@@ -9,7 +9,7 @@ export const portfolioLinks = [
   },
   {
     id: "portifolio",
-    label: "PORTIFOLIO",
+    label: "PORTFÓLIO",
     positionClass: "top-[42.685%]",
     color: "#0015ff",
     blendMode: "overlay",
@@ -17,7 +17,7 @@ export const portfolioLinks = [
   },
   {
     id: "video",
-    label: "VIDEO",
+    label: "VÍDEO",
     positionClass: "top-[62.778%]",
     color: "#0015ff",
     blendMode: "normal",

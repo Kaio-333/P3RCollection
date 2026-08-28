@@ -93,7 +93,7 @@ function AlbumDeck({ onPreviewChange }) {
     audio
       .play()
       .then(() => {
-        fadeAudio(audio, 0.82, 900);
+        fadeAudio(audio, 0.3, 900);
       })
       .catch(() => {
         playingAudiosRef.current.delete(audio);
@@ -273,7 +273,7 @@ export function CollectionPage() {
 
         <header className="figma-collection-header" data-reveal>
           <span aria-hidden="true">/</span>
-          <h1>COLECAO</h1>
+          <h1>COLEÇÃO</h1>
         </header>
 
         <div className="origin-paper" data-reveal>
@@ -299,39 +299,50 @@ export function CollectionPage() {
             <figure className="roblox-photo">
               <img src={collectionMedia.robloxClassic} alt="Roblox clássico" />
             </figure>
+            <div className="first-game-archive">
+              <figure className="zombie-archive-photo">
+                <img
+                  src={collectionMedia.zombieGame}
+                  alt="Jogo de zumbi criado aos 10 anos"
+                />
+              </figure>
+              <figure className="archive-created-date">
+                <img
+                  src={collectionMedia.createdAt}
+                  alt="Criado em 22 de abril de 2015"
+                />
+              </figure>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="dither-transition" aria-hidden="true">
-        <span>DESCENDO MAIS FUNDO</span>
-      </div>
+      <div className="section-blend blend-to-programming" aria-hidden="true" />
 
       <section className="programming-section">
         <div className="content-shell">
           <div className="programming-copy" data-reveal>
-            <SectionHeading number="3.0">Programacao</SectionHeading>
+            <SectionHeading number="3.0">Programação</SectionHeading>
             <p>{collectionCopy.firstGame}</p>
             <p>{collectionCopy.stillWorks}</p>
             <p>{collectionCopy.returnToRoblox}</p>
           </div>
 
           <div className="game-history" data-reveal>
-            <figure className="game-shot old-game-shot">
-              <img src={collectionMedia.zombieGame} alt="Jogo de zumbi criado aos 10 anos" />
-              <figcaption>PRIMEIRO JOGO // 2015</figcaption>
-            </figure>
-            <figure className="created-date">
-              <img src={collectionMedia.createdAt} alt="Criado em 22 de abril de 2015" />
-            </figure>
             <figure className="game-shot recent-game-shot">
               <img src={collectionMedia.recentGame} alt="Jogo recente criado no Roblox" />
-              <figcaption>10 ANOS DEPOIS // 3,900 VISITAS</figcaption>
+              <figcaption>10 ANOS DEPOIS // 3.900 VISITAS</figcaption>
+            </figure>
+            <figure className="created-date recent-created-date">
+              <img
+                src={collectionMedia.recentCreatedAt}
+                alt="Criado em 18 de fevereiro de 2025"
+              />
             </figure>
           </div>
 
           <div className="game-video-wrap" data-reveal>
-            <div className="video-label">VIDEO DO JOGO</div>
+            <div className="video-label">VÍDEO DO JOGO</div>
             <video
               src={collectionMedia.gameVideo}
               controls
@@ -346,9 +357,21 @@ export function CollectionPage() {
               04
             </span>
             <p>{collectionCopy.circle}</p>
+            <p className="current-achievement">
+              {collectionCopy.currentAchievement}
+            </p>
+            <figure className="award-photo">
+              <img
+                src={collectionMedia.pucprAward}
+                alt="Equipe premiada em segundo lugar na Galeria de Projetos da PUCPR"
+              />
+              <figcaption>2º LUGAR // GALERIA DE PROJETOS PUCPR</figcaption>
+            </figure>
           </div>
         </div>
       </section>
+
+      <div className="section-blend blend-to-dreams" aria-hidden="true" />
 
       <section
         className={`dreams-section ${albumTheme ? `theme-${albumTheme}` : "theme-default"}`}
@@ -408,7 +431,7 @@ export function CollectionPage() {
           </div>
 
           <div className="memory-strip" data-reveal>
-            <span>VIDEOS DE RISADAS E COISAS ALEATORIAS</span>
+            <span>VÍDEOS DE RISADAS E COISAS ALEATÓRIAS</span>
             <b>REC</b>
           </div>
         </div>
