@@ -34,14 +34,14 @@ export const collectionMedia = {
   createdAt: assetUrl("roblox-created-2015.png"),
   recentCreatedAt: assetUrl("roblox-created-2025.png"),
   recentGame: assetUrl("jogo-roblox-recente.png"),
-  gameVideo: assetUrl("jogo-kumo.mp4"),
+  gameVideo: assetUrl("jogo-kumo.web.mp4"),
   lastfm: assetUrl("lastfm.png"),
   personaWater: assetUrl("persona-water.jpeg"),
   sisterhoodEye: assetUrl("eye.png"),
   pucprAward: assetUrl("premiacao-pucpr.jpeg"),
-  valorantReplay: assetUrl("valorant-replay.mp4"),
-  laughterVideo: assetUrl("video-risada.mp4"),
-  sewerslvtBackdrop: assetUrl("sewerslvt-goodbye-loop.mp4"),
+  valorantReplay: assetUrl("valorant-replay.web.mp4"),
+  laughterVideo: assetUrl("video-risada.web.mp4"),
+  sewerslvtBackdrop: assetUrl("sewerslvt-goodbye-loop.web.mp4"),
 };
 
 export const favoriteAlbums = [

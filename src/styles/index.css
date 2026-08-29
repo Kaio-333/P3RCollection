@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Archivo Black Local";
+  src: url("/ArchivoBlack-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+}
+
 :root {
   color: #0015ff;
   background: #ffffff;
-  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Archivo Black Local", "Arial Black", Impact, "Helvetica Neue", Arial, sans-serif;
   font-synthesis: none;
   text-rendering: geometricPrecision;
 }
@@ -38,14 +46,26 @@ a {
   container-type: inline-size;
 }
 
-.background-video {
+.portfolio-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.background-video,
+.background-poster {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
   pointer-events: none;
-  transition: opacity 100ms linear;
+  transition: opacity 160ms linear;
+}
+
+.background-video::-webkit-media-controls,
+.background-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
 }
 
 .name-rail {
@@ -537,12 +557,12 @@ a {
   overflow: hidden;
   color: #08090d;
   background: var(--deep-blue);
-  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Archivo Black Local", "Arial Black", Impact, "Helvetica Neue", Arial, sans-serif;
 }
 
 .figma-collection .collection-back {
-  top: clamp(16px, 2.2vw, 34px);
-  left: clamp(16px, 2.5vw, 38px);
+  top: max(clamp(16px, 2.2vw, 34px), calc(env(safe-area-inset-top) + 8px));
+  left: max(clamp(16px, 2.5vw, 38px), calc(env(safe-area-inset-left) + 8px));
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
 }
@@ -1028,9 +1048,10 @@ a {
 .game-video-wrap video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 74vh;
   background: #000000;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .video-label {
@@ -1763,10 +1784,11 @@ a {
   z-index: 1;
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 74vh;
   border: 2px solid rgba(126, 234, 255, 0.72);
   background: #02050d;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 8px 9px 0 rgba(0, 0, 0, 0.45);
 }
 
@@ -1798,10 +1820,11 @@ a {
 .laughter-video-wrap video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 74vh;
   border: 2px solid rgba(255, 255, 255, 0.8);
   background: #02040b;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .laughter-video-heading {
@@ -2036,6 +2059,22 @@ a {
 }
 
 @media (max-width: 620px) {
+  .portfolio-stage {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+
+  .portfolio-link {
+    font-size: clamp(2rem, 9.4cqw, 3rem);
+  }
+
+  .background-video,
+  .background-poster {
+    object-position: center;
+  }
+
   .figma-collection-header {
     min-height: 92px;
     margin-top: 36px;
