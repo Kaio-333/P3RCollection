@@ -9,7 +9,7 @@ export function PortfolioHero() {
   return (
     <main className="portfolio-page grid min-h-dvh place-items-center overflow-hidden bg-white">
       <section
-        className="portfolio-stage relative isolate aspect-video w-[min(100vw,calc(100dvh*1.77778))] shrink-0 overflow-hidden bg-white"
+        className="portfolio-stage relative isolate shrink-0 overflow-hidden bg-[#00138c]"
         aria-labelledby="portfolio-owner"
       >
         <BackgroundVideoSequence onIntroComplete={revealPortfolio} />

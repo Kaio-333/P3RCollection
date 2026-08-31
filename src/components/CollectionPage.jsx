@@ -288,7 +288,7 @@ export function CollectionPage() {
           </figure>
 
           <div className="paper-copy creativity-copy">
-            <SectionHeading number="2.0">Criatividade</SectionHeading>
+            <SectionHeading number="1.1">Criatividade</SectionHeading>
             <p>{collectionCopy.creativity}</p>
           </div>
 
@@ -317,61 +317,7 @@ export function CollectionPage() {
         </div>
       </section>
 
-      <div className="section-blend blend-to-programming" aria-hidden="true" />
-
-      <section className="programming-section">
-        <div className="content-shell">
-          <div className="programming-copy" data-reveal>
-            <SectionHeading number="3.0">Programação</SectionHeading>
-            <p>{collectionCopy.firstGame}</p>
-            <p>{collectionCopy.stillWorks}</p>
-            <p>{collectionCopy.returnToRoblox}</p>
-          </div>
-
-          <div className="game-history" data-reveal>
-            <figure className="game-shot recent-game-shot">
-              <img src={collectionMedia.recentGame} alt="Jogo recente criado no Roblox" />
-              <figcaption>10 ANOS DEPOIS // 3.900 VISITAS</figcaption>
-            </figure>
-            <figure className="created-date recent-created-date">
-              <img
-                src={collectionMedia.recentCreatedAt}
-                alt="Criado em 18 de fevereiro de 2025"
-              />
-            </figure>
-          </div>
-
-          <div className="game-video-wrap" data-reveal>
-            <div className="video-label">VÍDEO DO JOGO</div>
-            <video
-              src={collectionMedia.gameVideo}
-              controls
-              muted
-              playsInline
-              preload="metadata"
-            />
-          </div>
-
-          <div className="circle-copy" data-reveal>
-            <span className="circle-mark" aria-hidden="true">
-              04
-            </span>
-            <p>{collectionCopy.circle}</p>
-            <p className="current-achievement">
-              {collectionCopy.currentAchievement}
-            </p>
-            <figure className="award-photo">
-              <img
-                src={collectionMedia.pucprAward}
-                alt="Equipe premiada em segundo lugar na Galeria de Projetos da PUCPR"
-              />
-              <figcaption>2º LUGAR // GALERIA DE PROJETOS PUCPR</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <div className="section-blend blend-to-dreams" aria-hidden="true" />
+      <div className="section-blend blend-origin-to-dreams" aria-hidden="true" />
 
       <section
         className={`dreams-section ${albumTheme ? `theme-${albumTheme}` : "theme-default"}`}
@@ -415,7 +361,7 @@ export function CollectionPage() {
 
         <div className="content-shell dreams-content">
           <div className="dreams-heading" data-reveal>
-            <SectionHeading number="4.0">SONHOS E GOSTOS</SectionHeading>
+            <SectionHeading number="2.0">SONHOS E GOSTOS</SectionHeading>
           </div>
 
           <div className="music-intro" data-reveal>
@@ -438,11 +384,10 @@ export function CollectionPage() {
             </div>
             <div className="valorant-video-wrap" data-reveal>
               <span className="replay-video-label">REPLAY // VALORANT</span>
-              <video
-                controls
-                muted
-                playsInline
-                preload="metadata"
+              <img
+                alt="Replay de uma partida de Valorant"
+                decoding="async"
+                loading="lazy"
                 src={collectionMedia.valorantReplay}
               />
             </div>
@@ -458,6 +403,59 @@ export function CollectionPage() {
               preload="metadata"
               src={collectionMedia.laughterVideo}
             />
+          </div>
+        </div>
+      </section>
+
+      <div className="section-blend blend-dreams-to-programming" aria-hidden="true" />
+
+      <section className="programming-section">
+        <div className="content-shell">
+          <div className="programming-copy" data-reveal>
+            <SectionHeading number="3.0">Programação</SectionHeading>
+            <p>{collectionCopy.firstGame}</p>
+            <p>{collectionCopy.stillWorks}</p>
+            <p>{collectionCopy.returnToRoblox}</p>
+          </div>
+
+          <div className="game-history" data-reveal>
+            <figure className="game-shot recent-game-shot">
+              <img src={collectionMedia.recentGame} alt="Jogo recente criado no Roblox" />
+              <figcaption>10 ANOS DEPOIS // 3.900 VISITAS</figcaption>
+            </figure>
+            <figure className="created-date recent-created-date">
+              <img
+                src={collectionMedia.recentCreatedAt}
+                alt="Criado em 18 de fevereiro de 2025"
+              />
+            </figure>
+          </div>
+
+          <div className="game-video-wrap" data-reveal>
+            <div className="video-label">DEMONSTRAÇÃO DO JOGO</div>
+            <img
+              alt="Demonstração do jogo criado no Roblox"
+              decoding="async"
+              loading="lazy"
+              src={collectionMedia.gameDemo}
+            />
+          </div>
+
+          <div className="circle-copy" data-reveal>
+            <span className="circle-mark" aria-hidden="true">
+              3.1
+            </span>
+            <p>{collectionCopy.circle}</p>
+            <p className="current-achievement">
+              {collectionCopy.currentAchievement}
+            </p>
+            <figure className="award-photo">
+              <img
+                src={collectionMedia.pucprAward}
+                alt="Equipe premiada em segundo lugar na Galeria de Projetos da PUCPR"
+              />
+              <figcaption>2º LUGAR // GALERIA DE PROJETOS PUCPR</figcaption>
+            </figure>
           </div>
         </div>
       </section>

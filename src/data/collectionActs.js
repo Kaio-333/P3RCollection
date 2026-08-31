@@ -4,7 +4,7 @@ export const collectionCopy = {
   beginning:
     "Sou nascido em Belém do Pará. Acredito que foi onde eu aprendi a ser respeitoso e curioso. Sinto bastante saudade da família com quem convivi. Desde criança, sempre fui tímido. Foi aí, então, que encontrei minha paz nos computadores.",
   creativity:
-    "Desde cedo, na casa do meu primo mais velho, tive contato com computadores e, desde o primeiro contato, já fiquei curioso demais. Sempre queria ficar mexendo no computador, tentando entender o que cada coisa fazia e como fazia. Com isso, veio meu amor por jogos, principalmente Minecraft, onde minha criatividade era finalmente entendida, seja com redstone, blocos de comando ou mods. Além disso, outro jogo que ajudou a alimentar minha curiosidade por programação sempre foi, sem dúvidas, o Roblox. No Roblox, sempre quis fazer meus jogos. Aprendendo sozinho e vendo tutoriais quando tinha menos de 7 anos, aprendi a fazer jogos e também aprendi inglês, assistindo e traduzindo simultaneamente. Jogar Minecraft também me ajudou bastante a ser autodidata em inglês; aprendi muito por assimilação nesse jogo.",
+    "Desde cedo, na casa do meu primo mais velho, tive contato com computadores e, desde o primeiro contato, já fiquei curioso demais. Sempre queria ficar mexendo no computador, tentando entender o que cada coisa fazia e como fazia. Com isso, veio meu amor por jogos, principalmente Minecraft, onde minha criatividade era finalmente entendida, seja com redstone, blocos de comando ou mods. A redstone funciona como um sistema de circuitos e lógica dentro do jogo, enquanto os blocos de comando executam instruções e automatizam ações. Os dois se relacionam com programação por envolverem lógica, condições, sequências e automação. Além disso, outro jogo que ajudou a alimentar minha curiosidade por programação sempre foi, sem dúvidas, o Roblox. No Roblox, sempre quis fazer meus jogos. Aprendendo de forma autodidata e vendo tutoriais quando tinha menos de 7 anos, aprendi a fazer jogos e também aprendi inglês, assistindo e traduzindo simultaneamente. Jogar Minecraft também me ajudou bastante a ser autodidata em inglês; aprendi muito por assimilação nesse jogo.",
   firstGame:
     "Após inúmeros tutoriais, eu finalmente consegui fazer algo que me divertiu na época.",
   stillWorks:
@@ -34,12 +34,12 @@ export const collectionMedia = {
   createdAt: assetUrl("roblox-created-2015.png"),
   recentCreatedAt: assetUrl("roblox-created-2025.png"),
   recentGame: assetUrl("jogo-roblox-recente.png"),
-  gameVideo: assetUrl("jogo-kumo.web.mp4"),
+  gameDemo: assetUrl("jogo-kumo.gif"),
   lastfm: assetUrl("lastfm.png"),
   personaWater: assetUrl("persona-water.jpeg"),
   sisterhoodEye: assetUrl("eye.png"),
   pucprAward: assetUrl("premiacao-pucpr.jpeg"),
-  valorantReplay: assetUrl("valorant-replay.web.mp4"),
+  valorantReplay: assetUrl("valorant-replay.gif"),
   laughterVideo: assetUrl("video-risada.web.mp4"),
   sewerslvtBackdrop: assetUrl("sewerslvt-goodbye-loop.web.mp4"),
 };
