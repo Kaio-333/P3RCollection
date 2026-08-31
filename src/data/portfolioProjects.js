@@ -28,7 +28,7 @@ export const portfolioProjects = [
     paragraphs: [
       "O AccessFlow foi um projeto voltado à acessibilidade web para melhorar a experiência de pessoas com deficiência visual, TDAH e dislexia. Utilizamos filtros de contraste e controle de escala tipográfica.",
       "Durante esse projeto, aprendi a procurar pessoas que realmente tinham um problema a ser resolvido e a ouvi-las, para fazer um produto que realmente ajudasse, e não apenas fazer algo por fazer.",
-      "Fiquei encarregado do front-end porque queria me aprofundar nessa área. Afinal, amo design. Creio que deu certo, mas quero aperfeiçoar isso ainda mais.",
+      "Fiquei encarregado do front-end porque queria me aprofundar nessa área. Afinal, gosto bastante de design (UI/UX) e quis aplicar isso no projeto. Creio que deu certo, mas quero aperfeiçoar isso ainda mais.",
     ],
   },
   {
