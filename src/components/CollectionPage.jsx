@@ -226,8 +226,26 @@ function Bubbles() {
   );
 }
 
+function ScrollContinuationCue({ progress, hasMore }) {
+  return (
+    <div
+      className={`collection-scroll-cue ${hasMore ? "is-visible" : "is-complete"}`}
+      style={{ "--scroll-progress": progress }}
+      aria-hidden="true"
+    >
+      <span className="scroll-cue-track">
+        <i />
+      </span>
+    </div>
+  );
+}
+
 export function CollectionPage() {
   const [albumPreview, setAlbumPreview] = useState(null);
+  const [scrollStatus, setScrollStatus] = useState({
+    progress: 0,
+    hasMore: true,
+  });
   const sewerslvtVideoRef = useRef(null);
   const albumTheme = albumPreview?.theme ?? null;
 
@@ -258,9 +276,53 @@ export function CollectionPage() {
     }
   }, [albumTheme]);
 
+  useEffect(() => {
+    let frame = null;
+
+    const updateScrollStatus = () => {
+      if (frame) window.cancelAnimationFrame(frame);
+
+      frame = window.requestAnimationFrame(() => {
+        const page = document.documentElement;
+        const scrollableDistance = Math.max(page.scrollHeight - window.innerHeight, 1);
+        const progress = Math.min(Math.max(window.scrollY / scrollableDistance, 0), 1);
+        const hasMore = window.scrollY < scrollableDistance - 24;
+
+        setScrollStatus((current) => {
+          if (
+            Math.abs(current.progress - progress) < 0.002 &&
+            current.hasMore === hasMore
+          ) {
+            return current;
+          }
+
+          return { progress, hasMore };
+        });
+      });
+    };
+
+    updateScrollStatus();
+    window.addEventListener("scroll", updateScrollStatus, { passive: true });
+    window.addEventListener("resize", updateScrollStatus);
+    const pageResizeObserver =
+      "ResizeObserver" in window
+        ? new ResizeObserver(updateScrollStatus)
+        : null;
+    pageResizeObserver?.observe(document.body);
+    pageResizeObserver?.observe(document.documentElement);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollStatus);
+      window.removeEventListener("resize", updateScrollStatus);
+      pageResizeObserver?.disconnect();
+    };
+  }, []);
+
   return (
     <main className="collection-page figma-collection">
       <AlbumCinematicFocus album={albumPreview} />
+      <ScrollContinuationCue {...scrollStatus} />
 
       <a className="collection-back" href="#inicio" aria-label="Voltar ao início">
         <span aria-hidden="true">←</span>

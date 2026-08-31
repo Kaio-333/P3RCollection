@@ -570,6 +570,54 @@ a {
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
 }
 
+.collection-scroll-cue {
+  position: fixed;
+  z-index: 8;
+  right: auto;
+  bottom: max(clamp(18px, 3vw, 42px), calc(env(safe-area-inset-bottom) + 12px));
+  left: 50%;
+  display: block;
+  width: min(560px, calc(100vw - 80px));
+  padding: 8px 10px;
+  background: rgba(7, 9, 20, 0.92);
+  border: 1px solid rgba(126, 234, 255, 0.38);
+  clip-path: polygon(1% 8%, 100% 0, 99% 92%, 0 100%);
+  box-shadow: 7px 7px 0 rgba(255, 49, 95, 0.72);
+  pointer-events: none;
+  transition:
+    opacity 260ms ease,
+    transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.collection-scroll-cue.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.collection-scroll-cue.is-complete {
+  opacity: 0;
+  transform: translateX(-50%) translateY(24px);
+}
+
+.scroll-cue-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.scroll-cue-track i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: linear-gradient(90deg, var(--electric-blue) 0%, #78ecff 58%, #ffffff 100%);
+  transform: scaleX(var(--scroll-progress));
+  transform-origin: left;
+  transition: transform 140ms linear;
+}
+
 .origin-section {
   position: relative;
   min-height: 1460px;
@@ -701,6 +749,7 @@ a {
   font-size: clamp(1rem, 1.45vw, 1.28rem);
   font-weight: 700;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 .paper-copy > p {
@@ -2081,6 +2130,25 @@ a {
     object-position: center;
   }
 
+  .collection-scroll-cue {
+    bottom: max(12px, calc(env(safe-area-inset-bottom) + 8px));
+    width: calc(100vw - 72px);
+    padding: 7px 9px;
+    clip-path: polygon(2% 8%, 100% 0, 98% 91%, 0 100%);
+  }
+
+  .collection-scroll-cue.is-visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .collection-scroll-cue.is-complete {
+    transform: translateX(-50%) translateY(22px);
+  }
+
+  .scroll-cue-track {
+    height: 6px;
+  }
+
   .figma-collection-header {
     min-height: 92px;
     margin-top: 36px;
@@ -2259,6 +2327,11 @@ a {
 
   .vinyl-album,
   .vinyl-record {
+    transition: none;
+  }
+
+  .collection-scroll-cue,
+  .scroll-cue-track i {
     transition: none;
   }
 }
