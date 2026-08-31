@@ -6,6 +6,13 @@ import {
 } from "../data/collectionActs";
 
 const ALBUM_PREVIEW_VOLUME = 0.07;
+const COLLECTION_TOPICS = [
+  { id: "ato-1-0", number: "1.0", label: "Começo" },
+  { id: "ato-1-1", number: "1.1", label: "Criatividade" },
+  { id: "ato-2-0", number: "2.0", label: "Gostos e músicas" },
+  { id: "ato-3-0", number: "3.0", label: "Programação" },
+  { id: "ato-3-1", number: "3.1", label: "Círculo e conquistas" },
+];
 
 function SectionHeading({ number, children, light = false }) {
   return (
@@ -240,8 +247,39 @@ function ScrollContinuationCue({ progress, hasMore }) {
   );
 }
 
+function CollectionTopicRail({ activeTopic }) {
+  const goToTopic = (topicId) => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.getElementById(topicId)?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
+  return (
+    <nav className="collection-topic-rail" aria-label="Tópicos da coleção">
+      {COLLECTION_TOPICS.map((topic) => (
+        <button
+          className={activeTopic === topic.id ? "is-active" : ""}
+          key={topic.id}
+          type="button"
+          onClick={() => goToTopic(topic.id)}
+          aria-current={activeTopic === topic.id ? "location" : undefined}
+          aria-label={`${topic.number} — ${topic.label}`}
+          title={`${topic.number} — ${topic.label}`}
+        >
+          <span aria-hidden="true" />
+          <b>{topic.number}</b>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
 export function CollectionPage() {
   const [albumPreview, setAlbumPreview] = useState(null);
+  const [activeTopic, setActiveTopic] = useState(COLLECTION_TOPICS[0].id);
   const [scrollStatus, setScrollStatus] = useState({
     progress: 0,
     hasMore: true,
@@ -262,6 +300,28 @@ export function CollectionPage() {
 
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const topicElements = COLLECTION_TOPICS.map(({ id }) =>
+      document.getElementById(id),
+    ).filter(Boolean);
+    const topicObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleTopics = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleTopics[0]) setActiveTopic(visibleTopics[0].target.id);
+      },
+      {
+        rootMargin: "-18% 0px -62% 0px",
+        threshold: 0,
+      },
+    );
+
+    topicElements.forEach((element) => topicObserver.observe(element));
+    return () => topicObserver.disconnect();
   }, []);
 
   useEffect(() => {
@@ -323,6 +383,7 @@ export function CollectionPage() {
     <main className="collection-page figma-collection">
       <AlbumCinematicFocus album={albumPreview} />
       <ScrollContinuationCue {...scrollStatus} />
+      <CollectionTopicRail activeTopic={activeTopic} />
 
       <a className="collection-back" href="#inicio" aria-label="Voltar ao início">
         <span aria-hidden="true">←</span>
@@ -339,7 +400,7 @@ export function CollectionPage() {
         </header>
 
         <div className="origin-paper" data-reveal>
-          <div className="paper-copy beginning-copy">
+          <div className="paper-copy beginning-copy" id="ato-1-0" data-topic>
             <SectionHeading number="1.0">Começo</SectionHeading>
             <p>{collectionCopy.beginning}</p>
           </div>
@@ -349,7 +410,7 @@ export function CollectionPage() {
             <figcaption>BELÉM // COMEÇO</figcaption>
           </figure>
 
-          <div className="paper-copy creativity-copy">
+          <div className="paper-copy creativity-copy" id="ato-1-1" data-topic>
             <SectionHeading number="1.1">Criatividade</SectionHeading>
             <p>{collectionCopy.creativity}</p>
           </div>
@@ -422,7 +483,7 @@ export function CollectionPage() {
         />
 
         <div className="content-shell dreams-content">
-          <div className="dreams-heading" data-reveal>
+          <div className="dreams-heading" id="ato-2-0" data-topic data-reveal>
             <SectionHeading number="2.0">SONHOS E GOSTOS</SectionHeading>
           </div>
 
@@ -473,7 +534,7 @@ export function CollectionPage() {
 
       <section className="programming-section">
         <div className="content-shell">
-          <div className="programming-copy" data-reveal>
+          <div className="programming-copy" id="ato-3-0" data-topic data-reveal>
             <SectionHeading number="3.0">Programação</SectionHeading>
             <p>{collectionCopy.firstGame}</p>
             <p>{collectionCopy.stillWorks}</p>
@@ -503,7 +564,7 @@ export function CollectionPage() {
             />
           </div>
 
-          <div className="circle-copy" data-reveal>
+          <div className="circle-copy" id="ato-3-1" data-topic data-reveal>
             <span className="circle-mark" aria-hidden="true">
               3.1
             </span>
