@@ -94,19 +94,18 @@ function PortfolioLoading({ visible }) {
   );
 }
 
-function WordRevealText({ children }) {
+function WordRevealText({ children, index }) {
   return (
-    <p className="portfolio-word-reveal">
-      {children.split(" ").map((word, index) => (
-        <span key={`${word}-${index}`} style={{ "--word-index": Math.min(index, 18) }}>
-          {word}{" "}
-        </span>
-      ))}
+    <p
+      className="portfolio-word-reveal"
+      style={{ "--paragraph-index": index }}
+    >
+      {children}
     </p>
   );
 }
 
-function ProjectVisual({ project }) {
+function ProjectVisual({ project, active }) {
   if (project.images) {
     return (
       <div
@@ -116,7 +115,13 @@ function ProjectVisual({ project }) {
       >
         {project.images.map((image) => (
           <figure key={image.src}>
-            <img src={image.src} alt={image.alt} />
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading={active ? "eager" : "lazy"}
+              decoding="async"
+              fetchPriority={active ? "high" : "low"}
+            />
           </figure>
         ))}
       </div>
@@ -151,11 +156,13 @@ function ProjectCard({ project, active, clone }) {
       </header>
 
       <div className="project-card-body">
-        <ProjectVisual project={project} />
+        <ProjectVisual project={project} active={active} />
         <div className="project-copy-panel">
           <small>{project.eyebrow}</small>
-          {project.paragraphs.map((paragraph) => (
-            <WordRevealText key={paragraph}>{paragraph}</WordRevealText>
+          {project.paragraphs.map((paragraph, index) => (
+            <WordRevealText key={paragraph} index={index}>
+              {paragraph}
+            </WordRevealText>
           ))}
         </div>
       </div>
@@ -244,9 +251,18 @@ export function PortfolioPage() {
   }, []);
 
   useEffect(() => {
-    const updateMetrics = () => setMetrics(getCarouselMetrics());
+    let resizeFrame = null;
+    const updateMetrics = () => {
+      window.cancelAnimationFrame(resizeFrame);
+      resizeFrame = window.requestAnimationFrame(() => {
+        setMetrics(getCarouselMetrics());
+      });
+    };
     window.addEventListener("resize", updateMetrics);
-    return () => window.removeEventListener("resize", updateMetrics);
+    return () => {
+      window.cancelAnimationFrame(resizeFrame);
+      window.removeEventListener("resize", updateMetrics);
+    };
   }, []);
 
   useEffect(() => {
@@ -279,7 +295,7 @@ export function PortfolioPage() {
         }
         transitionLockedRef.current = false;
       },
-      reducedMotion ? 80 : 680,
+      reducedMotion ? 40 : 520,
     );
 
     return () => window.clearTimeout(timer);
