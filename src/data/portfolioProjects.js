@@ -75,4 +75,70 @@ export const portfolioProjects = [
       "Aqui, aprendi a trabalhar sob pressão. No último dia, descobrimos muitos bugs que precisavam ser consertados urgentemente. Apenas 10 minutos antes da entrega, conseguimos corrigir, entregar e apresentar sem erros. Foi um nervosismo sem fim, mas aprendemos a lição kkkkk.",
     ],
   },
+  {
+    id: "portfolio-p3r",
+    number: "04",
+    title: "PORTFÓLIO / COLEÇÃO",
+    eyebrow: "DESIGN / FRONT-END",
+    accent: "#0004ff94",
+    titleColor: "#0015ff",
+    titleBackground: "#ffffffff",
+    link: "https://github.com/Kaio-333/P3RCollection",
+    images: [
+      { src: assetUrl("portfolio-p3r-collection.png"), alt: "Página inicial da P3R Collection com o título e links principais" },
+    ],
+    paragraphs: [
+      "Este projeto nasceu da minha vontade de explorar o desenvolvimento web moderno, principalmente o design.",
+      "Nesse projeto, pude aprofundar meus conhecimentos em CSS e JavaScript, implementando animações e transições via Figma."
+    ]
+  },
+  {
+    id: "corsy",
+    number: "05",
+    title: "CORSY",
+    eyebrow: "MÚSICA / FRONT-END / RUST",
+    accent: "#53ffa9ff",
+    titleColor: "#000000ff",
+    titleBackground: "#ffffffff",
+    link: "https://github.com/Kaio-333/Placeholder",
+    images: [
+      { src: assetUrl("portfolio-corsy.png"), alt: "Página inicial do Corsy" },
+    ],
+    paragraphs: [
+      "Este projeto nasceu da minha vontade de criar um aplicativo que não demandasse tantos recursos do computador enquanto eu fazia outras tarefas ouvindo música.",
+      "Nesse projeto, pude aprofundar meus conhecimentos em Rust, front-end, criação de APIs e a fazer um aplicativo executável de verdade. E o melhor de tudo, não tem anúncios."
+    ]
+  },
+  {
+    id: "Stairs-Of-Hell",
+    number: "06",
+    title: "STAIRS OF HELL",
+    eyebrow: "GAME DESIGN / LUAU / BLENDER / ANIMAÇÃO",
+    accent: "#5a1d1bff",
+    titleColor: "#7a3232ff",
+    titleBackground: "#ffffffff",
+    link: "https://www.roblox.com/games/139404412642357/Stairs-of-Hell",
+    images: [
+      { src: assetUrl("portfolio-stairs-of-hell.png"), alt: "Página do jogo no Roblox" },
+    ],
+    paragraphs: [
+      "Nesse processo, aprendi game design, modelagem 3D e, principalmente, animações de rigs 3D. Acredito que esse processo foi um dos mais divertidos da minha vida, pois eu estava ao lado de alguém com quem gosto de trabalhar. Conseguimos, no final, 3.900 visitas no jogo e ficamos satisfeitos com o projeto final.",
+    ]
+  },
+  {
+    id: "Ditherscape",
+    number: "07",
+    title: "DITHERSCAPE",
+    eyebrow: "CSS / SPOTIFY",
+    accent: "#200000ff",
+    titleColor: "#7a3232ff",
+    titleBackground: "#ffffffff",
+    link: "https://github.com/Kaio-333/Ditherscape",
+    images: [
+      { src: assetUrl("portifolio-ditherscape.png"), alt: "Imagem do tema no Spotify" },
+    ],
+    paragraphs: [
+      "Tema personalizável para o spotify, foi apenas um trabalho one-shot para deixar o spotify mais com a minha cara."
+    ]
+  }
 ];
