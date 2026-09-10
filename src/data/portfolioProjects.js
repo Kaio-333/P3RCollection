@@ -100,7 +100,7 @@ export const portfolioProjects = [
     accent: "#53ffa9ff",
     titleColor: "#000000ff",
     titleBackground: "#ffffffff",
-    link: "https://github.com/Kaio-333/Placeholder",
+    link: "https://github.com/Kaio-333/Corsy",
     images: [
       { src: assetUrl("portfolio-corsy.png"), alt: "Página inicial do Corsy" },
     ],
