@@ -16,8 +16,9 @@ export const portfolioLinks = [
   {
     id: "video",
     label: "VÍDEO",
+    href: "https://www.youtube.com/watch?v=XxwG-F7txPU",
     positionClass: "top-[62.778%]",
     color: "#ffffffff",
     textScale: 1.179,
-  },
+  }
 ];
