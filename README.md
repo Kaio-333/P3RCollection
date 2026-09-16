@@ -1,6 +1,6 @@
 # Coleção
 
-Implementação da Coleção, Portifólio e Vídeo para aplicação da Apple Developer Academy
+Implementação da Coleção & Portifólio 
 
 ## Estrutura
 
